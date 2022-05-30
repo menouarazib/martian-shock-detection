@@ -1,5 +1,6 @@
 import csv
 from datetime import timedelta, datetime
+from pickle import dump
 
 import numpy as np
 import pandas as pd
@@ -44,13 +45,13 @@ YEAR = 2012
 MONTH_1 = 7
 MONTH_2 = 7
 DAY_1 = 1
-DAY_2 = 10
+DAY_2 = 15
 
 START_TIME_TRAIN = datetime(YEAR, MONTH_1, DAY_1)
 STOP_TIME_TRAIN = datetime(YEAR, MONTH_2, DAY_2)
 
 # For TEST
-YEAR_TEST = 2008
+YEAR_TEST = 2011
 MONTH_1_TEST = 7
 MONTH_2_TEST = 7
 DAY_1_TEST = 3
@@ -71,7 +72,7 @@ MONTH_LABEL = 'month'
 DAY_LABEL = 'day'
 DATA_SHOCK_LABEL = 'data'
 
-THRESHOLD_PROBABILITY_CLASSIFICATION = 0.99  # 0.75  # 0.82
+THRESHOLD_PROBABILITY_CLASSIFICATION = 0.90  # 0.75  # 0.82
 
 METRICS = [
     keras.metrics.TruePositives(name='tp'),
@@ -87,7 +88,7 @@ METRICS = [
 
 colors_list = list(colors._colors_full_map.values())
 
-EPOCHS = 100
+EPOCHS = 300
 BATCH_SIZE = 2048
 
 if __name__ == '__main__':
@@ -137,6 +138,9 @@ if __name__ == '__main__':
 
     # Delete NaN rows
     data_set_for_training = data_set_for_training.dropna()
+
+    data_set_for_training.to_pickle("dataset+_"+str(DAY_1)+"_"+str(DAY_2)+".pkl")
+    exit(0)
 
     neg, pos = np.bincount(data_set_for_training[EVENT_LABEL])
     total = neg + pos
@@ -208,6 +212,9 @@ if __name__ == '__main__':
         epochs=EPOCHS,
         validation_data=(val_features, val_labels), class_weight=class_weight)
 
+    model.save('my_model_more_trained.h5')
+    dump(scaler, open('scaler_more_trained.pkl', 'wb'))
+    exit(0)
     plot_metrics(baseline_history, colors_list)
     plt.show()
 
@@ -322,7 +329,7 @@ if __name__ == '__main__':
         DAY_2_TEST) + "_" + str(MONTH_2_TEST) + "_" + str(
         YEAR_TEST) + "_probThreshold_" + str(
         THRESHOLD_PROBABILITY_CLASSIFICATION) + "_timeThreshold_" + str(size_window_around)
-    events_file_name = "Bow_Shock_Events_"+str(YEAR_TEST)
+    events_file_name = "Bow_Shock_Events_"+str(YEAR_TEST)+str(THRESHOLD_PROBABILITY_CLASSIFICATION)
     with open(events_file_name + '.csv', 'w') as f:
         write = csv.writer(f, delimiter=" ")
         write.writerows(list_events)

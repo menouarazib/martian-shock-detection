@@ -118,7 +118,7 @@ def make_model(train_features_shape, metrics, output_bias=None):
         output_bias = keras.initializers.Constant(output_bias)
     model_ = keras.Sequential([
         keras.layers.Dense(
-            60, activation='relu',
+            300, activation='relu',
             input_shape=(train_features_shape,)),
         keras.layers.Dropout(0.2),
         keras.layers.Dense(1, activation='sigmoid',
