@@ -45,13 +45,13 @@ YEAR = 2012
 MONTH_1 = 7
 MONTH_2 = 7
 DAY_1 = 1
-DAY_2 = 15
+DAY_2 = 10
 
 START_TIME_TRAIN = datetime(YEAR, MONTH_1, DAY_1)
 STOP_TIME_TRAIN = datetime(YEAR, MONTH_2, DAY_2)
 
 # For TEST
-YEAR_TEST = 2011
+YEAR_TEST = 2008
 MONTH_1_TEST = 7
 MONTH_2_TEST = 7
 DAY_1_TEST = 3
@@ -72,7 +72,7 @@ MONTH_LABEL = 'month'
 DAY_LABEL = 'day'
 DATA_SHOCK_LABEL = 'data'
 
-THRESHOLD_PROBABILITY_CLASSIFICATION = 0.90  # 0.75  # 0.82
+THRESHOLD_PROBABILITY_CLASSIFICATION = 0.82  # 0.75  # 0.82
 
 METRICS = [
     keras.metrics.TruePositives(name='tp'),
@@ -139,8 +139,8 @@ if __name__ == '__main__':
     # Delete NaN rows
     data_set_for_training = data_set_for_training.dropna()
 
-    data_set_for_training.to_pickle("dataset+_"+str(DAY_1)+"_"+str(DAY_2)+".pkl")
-    exit(0)
+    #data_set_for_training.to_pickle("dataset+_"+str(DAY_1)+"_"+str(DAY_2)+".pkl")
+    #exit(0)
 
     neg, pos = np.bincount(data_set_for_training[EVENT_LABEL])
     total = neg + pos
@@ -212,8 +212,8 @@ if __name__ == '__main__':
         epochs=EPOCHS,
         validation_data=(val_features, val_labels), class_weight=class_weight)
 
-    model.save('my_model_more_trained.h5')
-    dump(scaler, open('scaler_more_trained.pkl', 'wb'))
+    model.save('model.h5')
+    dump(scaler, open('scaler.pkl', 'wb'))
     exit(0)
     plot_metrics(baseline_history, colors_list)
     plt.show()
@@ -306,7 +306,7 @@ if __name__ == '__main__':
         column_p = df_i[column_probability]
         column_v = df_i[column_value]
         max_p = column_p.max()
-        if max_p < THRESHOLD_PROBABILITY_CLASSIFICATION:
+        if max_p < 0.81:
             continue
 
         max_index = column_p.idxmax()

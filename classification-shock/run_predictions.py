@@ -51,11 +51,11 @@ if __name__ == '__main__':
     amda_list_user_parameters = amda.list_user_parameters()
     print(amda_list_user_parameters)
 
-    model = keras.models.load_model('my_model_more_trained.h5')
+    model = keras.models.load_model('model.h5')
     # Check its architecture
     model.summary()
     # load the scaler
-    scaler = load(open('scaler_more_trained.pkl', 'rb'))
+    scaler = load(open('scaler.pkl', 'rb'))
     # Get dataset for test
     data_set_for_testing = get_features_from_amda(amda_list_user_parameters, FEATURES_TO_USE, START_TIME_TEST,
                                                   STOP_TIME_TEST, tolerance=TOLERANCE_FEATURES_CONCATENATING)

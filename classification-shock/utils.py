@@ -9,6 +9,7 @@ from sklearn.metrics import confusion_matrix
 import seaborn as sns
 from speasy import amda
 from tensorflow import keras
+from datetime import datetime
 
 
 def catalog_to_dataframe(catalog, data_column_name='data'):
@@ -180,3 +181,17 @@ def split_dataframe(df, chunk_size):
     for i in range(num_chunks):
         chunks.append(df.iloc[i * chunk_size:(i + 1) * chunk_size, :])
     return chunks
+
+
+def validate_time_format(date_string, date_format='%Y-%m-%d'):
+    """
+    Converts string date to datetime object according to this format: DATE_FORMAT
+    :param date_format: The format of date
+    :param date_string: given string date
+    :return: datetime object
+    """
+    try:
+        return datetime.strptime(date_string, date_format)
+    except ValueError:
+        raise ValueError("This is the incorrect date string format. It should be: ", date_format, " for this input: ",
+                         date_string)
