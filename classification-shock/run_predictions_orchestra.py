@@ -54,7 +54,7 @@ if __name__ == '__main__':
     config.amda_password.set('amda')
 
     amda_list_user_parameters = amda.list_user_parameters()
-
+    # Load the trained model
     model = keras.models.load_model('model.h5')
     # Check its architecture
     model.summary()
@@ -124,7 +124,6 @@ if __name__ == '__main__':
         df = pd.DataFrame(index=list_indexes, data=np.column_stack([list_probabilities, list_values]),
                           columns=[column_probability, column_value])
         list_dfs.append(df)
-
 
     list_events = []
 
