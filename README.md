@@ -10,7 +10,8 @@ To do predictions you need to follow these steps:
 <ul>
     <li>activate the virtual environment = venv\Scripts\activate</li>
     <li>install the requirements = pip --no-cache-dir install -r path/../requirements.txt</li>
-    <li>run the script with the following arguments a path to store results, a start time <strong>start</strong>, a stop time <strong>stop</strong> and a destination folder <strong>path</strong> =>
+    <li>run the script with the following arguments a destination folder <strong>path</strong> to store results, a start time <strong>start</strong> and 
+    a stop time <strong>stop</strong> =>
     <strong> python -m run_predictions_orchestra path start stop</strong>
     </li>
 </ul>
