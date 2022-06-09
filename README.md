@@ -15,6 +15,7 @@ To do predictions you need to follow these steps:
     <strong> python -m run_predictions_orchestra path start stop</strong>
     </li>
 </ul>
+<p>For example: </p>
 python -m run_predictions_orchestra . 2008-07-03 2008-07-05
 
 
