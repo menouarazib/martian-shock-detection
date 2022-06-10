@@ -21,6 +21,7 @@ a virtual environment in order to make prediction of Martian Bow Shock crossings
 To do predictions you need to follow these steps:
 👏
 <ul>
+    <li>you should have python >= 3.10  already installed
     <li>activate the virtual environment = venv\Scripts\activate</li>
     <li>install the requirements = pip --no-cache-dir install -r path/../requirements.txt</li>
     <li>run the script with the following arguments a destination folder <strong>path</strong> to store results, a start time <strong>start</strong> and 
@@ -30,6 +31,5 @@ To do predictions you need to follow these steps:
 </ul>
 <p>For example: </p>
 python -m run_predictions_orchestra . 2008-07-03 2008-07-05
-
 
  👏
