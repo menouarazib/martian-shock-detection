@@ -72,7 +72,6 @@ if __name__ == '__main__':
     scaled_features = scaler.transform(features)
 
     predictions_baseline = model.predict(features, batch_size=BATCH_SIZE)
-    labels = np.zeros(len(predictions_baseline))
 
     events_index = []
     for i_loop in range(len(list_indexes)):
@@ -130,9 +129,7 @@ if __name__ == '__main__':
     for df_i in list_dfs:
         column_p = df_i[column_probability]
         column_v = df_i[column_value]
-
         max_index = column_v.idxmax()
-
         start_time_shock = max_index
         end_time_shock = start_time_shock + pd.DateOffset(minutes=1)
         start_time_shock = str(start_time_shock.isoformat())
@@ -142,15 +139,15 @@ if __name__ == '__main__':
 
     events_file_name = "Bow_Shock_Events_" + str(start.month) + "_" + str(start.year)
 
-    # open the file in the write mode
+    # Open the file in the write mode to write down the events (bow shocks)
     f = open(events_file_name + '.csv', 'w')
-    # create the csv writer
+    # Create the csv writer
     writer = csv.writer(f, delimiter=" ")
 
     for i in range(len(list_events)):
         row = list_events[i]
-        # write a row to the csv file
+        # Write a row to the csv file
         writer.writerow(row)
 
-    # close the file
+    # Close the file
     f.close()
