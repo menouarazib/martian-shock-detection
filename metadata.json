@@ -2,5 +2,5 @@
   "description": "Martian Bow Shock Detection",
   "args": [], "hyperparameters": [],
   "defaults": [], "output": {"type": "timetable"},
-  "install": {"files": ["run_predictions_orchestra.py", "utils.py"],
+  "install": {"files": ["run_predictions_orchestra.py", "utils.py", "scaler.pkl", "model.h5"],
     "executable": "run_predictions_orchestra"}}
