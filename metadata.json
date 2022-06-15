@@ -1,0 +1,6 @@
+{"id": "module_martian_shock_detection", "name": "martian_shock_detection",
+  "description": "Martian Bow Shock Detection",
+  "args": [], "hyperparameters": [],
+  "defaults": [], "output": {"type": "timetable"},
+  "install": {"files": ["run_predictions_orchestra.py", "utils.py"],
+    "executable": "run_predictions_orchestra"}}
