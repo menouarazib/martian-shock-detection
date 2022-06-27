@@ -14,6 +14,10 @@ the same time reducing weight for the majority class.* </br> </br>
 <sup>[1] B. E. S. Hall et al. “Annual variations in the Martian bow shock location as observed by the Mars Express mission”. In: Journal of
 Geophysical Research: Space Physics 121.11 (2016), pp. 11, 474–11, 494</sup>
 
+# Metrics
+Is this section you will find out the values of different metrics obtained during a training phase over one month of data (07-2012):
+![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_MLP_Class_Weight.png)
+
 <h2>Description</h2>
 <p>This repository contains a python script (run_predictions_orchestra.py) which should be executed in 
 a virtual environment in order to make prediction of Martian Bow Shock crossings associated with a given start and stop times.
