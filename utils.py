@@ -12,6 +12,8 @@ from tensorflow import keras
 from datetime import datetime
 
 
+DATE_FORMAT = '%Y-%m-%dT%H:%M:%S'
+
 def catalog_to_dataframe(catalog, data_column_name='data'):
     """
     Converts an AMDA catalog to a dataframe
@@ -232,7 +234,7 @@ def validate_time_format(date_string, date_format='%Y-%m-%d'):
     :return: datetime object
     """
     try:
-        return datetime.strptime(date_string, date_format)
+        return datetime.strptime(date_string, date_format=DATE_FORMAT)
     except ValueError:
         raise ValueError("This is the incorrect date string format. It should be: ", date_format, " for this input: ",
                          date_string)
