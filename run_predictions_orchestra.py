@@ -1,4 +1,5 @@
 import csv
+import os.path
 import sys
 import argparse
 
@@ -6,12 +7,12 @@ from pickle import load
 
 import numpy as np
 import pandas as pd
+
 from tensorflow import keras
+import speasy as spz
+from speasy import  config
 
 from utils import validate_time_format, get_features_from_amda
-from speasy import amda, config
-
-DATE_FORMAT = '%Y-%m-%d'
 
 # Parameters of features
 TOTELS_1_INDEX = 4
@@ -76,7 +77,8 @@ if __name__ == '__main__':
     config.amda_username.set('testKernel')
     config.amda_password.set('amda')
 
-    amda_list_user_parameters = amda.list_user_parameters()
+    amda_list_user_parameters = spz.amda.list_user_parameters()
+
     # Load the trained model
     model = keras.models.load_model('model.h5')
     # Check its architecture
@@ -163,7 +165,7 @@ if __name__ == '__main__':
     events_file_name = "Bow_Shock_Events_" + str(start.month) + "_" + str(start.year)
     events_file_name = "Bow_Shock_Events"
     # Open the file in the write mode to write down the events (bow shocks)
-    f = open(events_file_name + '.csv', 'w')
+    f = open(os.path.join(destination_folder_path, events_file_name + '.csv'), 'w')
     # Create the csv writer
     writer = csv.writer(f, delimiter=" ")
 

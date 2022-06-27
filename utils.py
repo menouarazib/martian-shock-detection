@@ -3,11 +3,10 @@ from datetime import timedelta
 
 import numpy as np
 import pandas as pd
-import speasy
 from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix
 import seaborn as sns
-from speasy import amda
+import speasy as spz
 from tensorflow import keras
 from datetime import datetime
 
@@ -43,10 +42,10 @@ def get_features_from_amda(amda_list_user_parameters, features_index_id, start_t
     for i_loop in range(len(features_index_id)):
         feature_index, feature_id = features_index_id[i_loop]
         if feature_index is not None:
-            feature_df = amda.get_data(amda_list_user_parameters[feature_index],
-                                       start_time, end_time).to_dataframe(datetime_index=True)
+            feature_df = spz.amda.get_data(amda_list_user_parameters[feature_index],
+                                           start_time, end_time).to_dataframe(datetime_index=True)
         else:
-            feature_df = speasy.get_data('amda/' + feature_id, start_time, end_time).to_dataframe(datetime_index=True)
+            feature_df = spz.get_data('amda/' + feature_id, start_time, end_time).to_dataframe(datetime_index=True)
 
         feature_df[feature_id] = feature_df[feature_id].astype(np.float16)
         feature_df.replace([np.inf, -np.inf], np.nan, inplace=True)
