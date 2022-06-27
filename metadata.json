@@ -1,6 +1,34 @@
-{"id": "module_martian_shock_detection", "name": "martian_shock_detection",
-  "description": "Martian Bow Shock Detection",
-  "args": [], "hyperparameters": [],
-  "defaults": [], "output": {"type": "timetable"},
-  "install": {"files": ["run_predictions_orchestra.py", "utils.py", "scaler.pkl", "model.h5"],
-    "executable": "run_predictions_orchestra"}}
+{
+    "id": 23,
+    "name": "martian_shock_detection",
+    "description": "Martian Bow Shock Detection",
+    "args": [
+        "start",
+        "stop"
+    ],
+    "hyperparameters": [],
+    "defaults": {
+        "start": "2008-07-03T00:00:00",
+        "stop": "2008-07-05T00:00:00"
+    },
+    "output": {
+        "type": "timetable",
+        "filename": "Bow_Shock_Events.csv"
+    },
+    "install": {
+        "python_version": "3.8",
+        "requirements": [],
+        "requirements_file": "requirements.txt",
+        "files": [
+            "run_predictions_orchestra.py",
+            "utils.py",
+            "scaler.pkl",
+            "model.h5"
+        ],
+        "executable": "run_predictions_orchestra",
+        "pre_process": [],
+        "post_process": []
+    },
+    "status": "pending",
+    "build_log": ""
+}

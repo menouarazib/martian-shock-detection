@@ -1,5 +1,7 @@
 import csv
 import sys
+import argparse
+
 from pickle import load
 
 import numpy as np
@@ -35,13 +37,34 @@ BATCH_SIZE = 2048
 
 THRESHOLD_PROBABILITY_CLASSIFICATION = 0.5
 
+KEY_ARGV_START = "--start"
+KEY_ARGV_STOP = "--stop"
+KEY_ARGV_OUTPUT_DIR = "--output_dir"
+
+START_TIME_DEBUG = "2008-07-03T00:00:00"
+"""
+The start time to use in order to debug, feel free to modify it
+"""
+
+STOP_TIME_DEBUG = "2008-07-05T23:59:00"
+"""
+The stop time to use in order to debug, feel free to modify it
+"""
+
 if __name__ == '__main__':
     arguments = sys.argv
     print("Given arguments: ", arguments)
-    nb_arguments = len(arguments)
-    destination_folder_path = arguments[1]
-    start = arguments[2]
-    stop = arguments[3]
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(KEY_ARGV_OUTPUT_DIR, type=str)
+    parser.add_argument(KEY_ARGV_START, type=str, default=START_TIME_DEBUG)
+    parser.add_argument(KEY_ARGV_STOP, type=str, default=STOP_TIME_DEBUG)
+
+    args = parser.parse_args()
+
+    destination_folder_path = args.output_dir
+    start = args.start
+    stop = args.stop
 
     start = validate_time_format(start)
     stop = validate_time_format(stop)
@@ -138,7 +161,7 @@ if __name__ == '__main__':
         list_events.append([start_time_shock[:19], end_time_shock[:19]])
 
     events_file_name = "Bow_Shock_Events_" + str(start.month) + "_" + str(start.year)
-
+    events_file_name = "Bow_Shock_Events"
     # Open the file in the write mode to write down the events (bow shocks)
     f = open(events_file_name + '.csv', 'w')
     # Create the csv writer

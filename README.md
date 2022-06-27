@@ -34,10 +34,9 @@ To do predictions you need to follow these steps:
     <li>install the requirements = pip --no-cache-dir install -r path/../requirements.txt</li>
     <li>run the script with the following arguments a destination folder <strong>path</strong> to store results, a start time <strong>start</strong> and 
     a stop time <strong>stop</strong> =>
-    <strong> python -m run_predictions_orchestra path start stop</strong>
+    <strong> python -m run_predictions_orchestra --output_dir " "  --start 2008-07-03 --stop 2008-07-06
+</strong>
     </li>
 </ul>
-<p>For example: </p>
-python -m run_predictions_orchestra . 2008-07-03 2008-07-05
 
  👏
