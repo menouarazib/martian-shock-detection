@@ -9,14 +9,14 @@
     "hyperparameters": [],
     "defaults": {
         "start": "2008-07-03T00:00:00",
-        "stop": "2008-07-05T00:00:00"
+        "stop": "2008-07-05T23:59:00"
     },
     "output": {
         "type": "timetable",
         "filename": "Bow_Shock_Events.csv"
     },
     "install": {
-        "python_version": "3.8",
+        "python_version": "3.10",
         "requirements": [],
         "requirements_file": "requirements.txt",
         "files": [
