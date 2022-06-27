@@ -2,13 +2,13 @@ from pickle import dump
 
 import numpy as np
 import pandas as pd
+from matplotlib import colors, pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
 
-from utils import make_model
-
+from utils import make_model, plot_metrics
 
 # Column's name of the shock in dataframe
 EVENT_LABEL = "event"
@@ -24,6 +24,8 @@ METRICS = [
     keras.metrics.AUC(name='auc'),
     keras.metrics.AUC(name='prc', curve='PR'),  # precision-recall curve
 ]
+
+colors_list = list(colors._colors_full_map.values())
 
 EPOCHS = 300
 BATCH_SIZE = 2048
@@ -91,5 +93,9 @@ if __name__ == '__main__':
         epochs=EPOCHS,
         validation_data=(val_features, val_labels), class_weight=class_weight)
 
-    model.save('model.h5')
-    dump(scaler, open('scaler.pkl', 'wb'))
+    #model.save('model.h5')
+    #dump(scaler, open('scaler.pkl', 'wb'))
+
+    plot_metrics(baseline_history, colors_list)
+    plt.show()
+

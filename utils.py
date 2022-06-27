@@ -114,6 +114,47 @@ def get_labels(df_dataset, df_shocks, nb_neighbors=0):
     return list_labels
 
 
+def construct_data_set_lstm(df_dataset, df_shocks):
+    shocks_positions = [0]
+    for i_shock, date_of_shock in enumerate(df_shocks.data):
+        date_of_shock = date_of_shock.replace(tzinfo=None)
+        position_shock = df_dataset.index.searchsorted(date_of_shock)
+        shocks_positions.append(position_shock)
+
+    number_features = len(df_dataset.columns)
+    print('Number of features is ', number_features)
+    list_features_1 = []
+    for i_position in range(len(shocks_positions) - 1):
+        shock_position = shocks_positions[i_position]
+        next_shock_position = shocks_positions[i_position + 1]
+        df_i = df_dataset.iloc[shock_position: next_shock_position]
+        # print(df_i)
+        # print(df_i.iloc[:, 0].valuess
+        df_i.dropna()
+        values = df_i.iloc[:, 0].values
+        print(values.shape)
+        list_features_1.append(values)
+    np_list = np.array(list_features_1, dtype=object)
+    print(np_list.shape)
+
+
+def sliding_windows(data, window, step=1):
+    """
+    Create a new numpy array with dimension of (((n-m)//step) +1, window, m), where each rwo is a (window,
+    m) array. Two successive windows have same rows except the first (step) ones. This is method is used to windowing
+    the data. This method is used to split the data set into sliding windows of various sizes (from 1 to 100 Hr)
+    https://numpy.org/doc/stable/reference/generated/numpy.lib.stride_tricks.as_strided.html
+    :param data: data as a (n,m) numpy array
+    :param window: the width of a window
+    :param step: step between two windows
+    :return: (((n-m)//step) +1, window, m) numpy array
+    @see page 61 pdf : https://tel.archives-ouvertes.fr/tel-03198435/document
+    """
+    new_shape = int((data.shape[0] - window) // step + 1), window, data.shape[1]
+    new_strides = (data.strides[0] * step,) + data.strides
+    return np.lib.stride_tricks.as_strided(data, shape=new_shape, strides=new_strides)
+
+
 def make_model(train_features_shape, metrics, output_bias=None):
     if output_bias is not None:
         output_bias = keras.initializers.Constant(output_bias)
@@ -135,7 +176,7 @@ def make_model(train_features_shape, metrics, output_bias=None):
 
 
 def plot_metrics(history, colors_list):
-    metrics = ['loss', 'prc', 'precision', 'recall']
+    metrics = ['loss', 'accuracy', 'precision', 'recall']
     for n, metric in enumerate(metrics):
         name = metric.replace("_", " ").capitalize()
         plt.subplot(2, 2, n + 1)
@@ -149,7 +190,7 @@ def plot_metrics(history, colors_list):
         elif metric == 'auc':
             plt.ylim([0.8, 1])
         else:
-            plt.ylim([0, 1])
+            plt.ylim([0, 1.0])
 
         plt.legend()
 
