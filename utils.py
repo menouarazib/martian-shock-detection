@@ -11,8 +11,8 @@ from speasy import amda
 from tensorflow import keras
 from datetime import datetime
 
-
 DATE_FORMAT = '%Y-%m-%dT%H:%M:%S'
+
 
 def catalog_to_dataframe(catalog, data_column_name='data'):
     """
