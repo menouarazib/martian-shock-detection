@@ -18,8 +18,7 @@ Geophysical Research: Space Physics 121.11 (2016), pp. 11, 474–11, 494</sup>
 Is this section you will find out the values of different metrics obtained during a training phase over one month of data (07-2012):
 ![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_MLP_Class_Weight.png)
 
-#Tests
-
+# Tests
 Our model detects all shocks present in the test set while generating many false positives.
 The most likely of them are indeed valid events and will be added to the catalog.
 
