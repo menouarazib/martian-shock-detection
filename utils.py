@@ -226,7 +226,7 @@ def split_dataframe(df, chunk_size):
     return chunks
 
 
-def validate_time_format(date_string, date_format='%Y-%m-%d'):
+def validate_time_format(date_string, date_format=DATE_FORMAT):
     """
     Converts string date to datetime object according to this format: DATE_FORMAT
     :param date_format: The format of date
@@ -234,7 +234,7 @@ def validate_time_format(date_string, date_format='%Y-%m-%d'):
     :return: datetime object
     """
     try:
-        return datetime.strptime(date_string, date_format=DATE_FORMAT)
+        return datetime.strptime(date_string, date_format)
     except ValueError:
         raise ValueError("This is the incorrect date string format. It should be: ", date_format, " for this input: ",
                          date_string)
