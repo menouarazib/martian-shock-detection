@@ -23,8 +23,8 @@ Example: python -m run_predictions_orchestra .  --start 2008-07-03T00:00:00 --st
 
 ![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Bow_Shock_Events_07_2008_Test.PNG)
 
-Zoom in:
-
+Zoom in between 2008-07-04T05:27:34 and 2008-07-04T08:40:20:
+![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Bow_Shock_Events_07_2008_Test_Zoom_In.PNG)
 
 <h2>Description</h2>
 <p>This repository contains a python script (run_predictions_orchestra.py) which should be executed in 
