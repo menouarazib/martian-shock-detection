@@ -21,7 +21,7 @@ Is this section you will find out the values of different metrics obtained durin
 # Tests
 Example: python -m run_predictions_orchestra .  --start 2008-07-03T00:00:00 --stop 2008-07-05T00:00:00
 
-![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_MLP_Class_Weight.png)
+![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Bow_Shock_Events_07_2008_Test.PNG)
 
 Zoom in:
 
