@@ -17,7 +17,7 @@ Geophysical Research: Space Physics 121.11 (2016), pp. 11, 474–11, 494</sup>
 # Metrics
 Metrics Definition:
 
-![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_definition.png)
+![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_definition.PNG)
 
 Model's Metrics:
 Is this section you will find out the values of different metrics obtained during a training phase over one month of data (07-2012):
