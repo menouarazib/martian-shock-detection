@@ -15,7 +15,7 @@ the same time reducing weight for the majority class.* </br> </br>
 Geophysical Research: Space Physics 121.11 (2016), pp. 11, 474–11, 494</sup>
 
 # Metrics
-Metrics Definition:
+##Metrics Definition:
 
 ![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_definition.PNG)
 
