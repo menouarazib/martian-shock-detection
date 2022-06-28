@@ -19,8 +19,12 @@ Is this section you will find out the values of different metrics obtained durin
 ![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_MLP_Class_Weight.png)
 
 # Tests
-Our model detects all shocks present in the test set while generating many false positives.
-The most likely of them are indeed valid events and will be added to the catalog.
+Example: python -m run_predictions_orchestra .  --start 2008-07-03T00:00:00 --stop 2008-07-05T00:00:00
+
+![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_MLP_Class_Weight.png)
+
+Zoom in:
+
 
 <h2>Description</h2>
 <p>This repository contains a python script (run_predictions_orchestra.py) which should be executed in 
