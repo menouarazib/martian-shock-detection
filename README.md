@@ -35,7 +35,7 @@ Zoom in between 2008-07-04T05:27:34 and 2008-07-04T08:40:20 =>
 <h2>Description</h2>
 <p>This repository contains a python script (run_predictions_orchestra.py) which should be executed in 
 a virtual environment in order to make prediction of Martian Bow Shock crossings associated with a given start and stop times.
-<h2>How this work ?</h2>
+<h2>How this works ?</h2>
 To do predictions you need to follow these steps:
 👏
 <ul>
