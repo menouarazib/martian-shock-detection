@@ -15,11 +15,11 @@ the same time reducing weight for the majority class.* </br> </br>
 Geophysical Research: Space Physics 121.11 (2016), pp. 11, 474–11, 494</sup>
 
 # Metrics
-##Metrics Definition:
+Metrics Definition:
 
 ![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_definition.png)
 
-<h2>Model's Metrics</h2>
+Model's Metrics:
 Is this section you will find out the values of different metrics obtained during a training phase over one month of data (07-2012):
 
 ![alt text](https://github.com/menouarazib/martian-shock-detection/blob/main/Metrics_MLP_Class_Weight.png)
