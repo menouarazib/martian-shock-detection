@@ -76,9 +76,10 @@ if __name__ == '__main__':
     # Login to amda
     config.amda.username.set('testKernel')
     config.amda.password.set('amda')
-
+    config.amda.user_cache_retention.set(0)
+    print('0')
     spz.amda.update_inventory()
-
+    print(1)
     amda_list_user_parameters = spz.amda.list_user_parameters()
 
     # Load the trained model
