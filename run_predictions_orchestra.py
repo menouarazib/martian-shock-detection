@@ -74,8 +74,10 @@ if __name__ == '__main__':
     print("Given end date: ", stop)
 
     # Login to amda
-    config.amda_username.set('testKernel')
-    config.amda_password.set('amda')
+    config.amda.username.set('testKernel')
+    config.amda.password.set('amda')
+
+    spz.amda.update_inventory()
 
     amda_list_user_parameters = spz.amda.list_user_parameters()
 
